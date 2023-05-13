@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::093899590031:role/AWSIRSA_EksTestMm_ExternalSecretOperatorAccess
+  name: externalsecrets-aws
+  namespace: security
