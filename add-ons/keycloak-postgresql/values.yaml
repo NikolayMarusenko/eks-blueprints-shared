@@ -1,4 +1,6 @@
 postgresql:
+  nameOverride: postgresql
+  fullnameOverride: postgresql
   # PostgreSQL read only replica parameters
   readReplicas:
     # Number of PostgreSQL read only replicas
