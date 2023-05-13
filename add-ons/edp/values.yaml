@@ -1,4 +1,4 @@
-edp:
+edp-install:
   global:
     edpName: edp-mm
     dnsWildCard: eks-test-mm.aws.main.edp.projects.epam.com

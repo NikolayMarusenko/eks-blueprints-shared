@@ -14,7 +14,7 @@ spec:
     targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
-        edp:
+        edp-install:
         {{- toYaml .Values.edp | nindent 10 }}
   destination:
     server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
