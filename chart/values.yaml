@@ -13,3 +13,7 @@ externalSecrets:
 tekton:
   enable: true
   createNamespace: true
+  
+keycloakPostgresql:
+  enable: true
+  createNamespace: true
