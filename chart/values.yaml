@@ -21,3 +21,7 @@ keycloakPostgresql:
 keycloak:
   enable: true
   createNamespace: false
+
+edp:
+  enable: true
+  createNamespace: true

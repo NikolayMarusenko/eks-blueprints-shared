@@ -1,0 +1,45 @@
+edp:
+  global:
+    edpName: edp-mm
+    dnsWildCard: eks-test-mm.aws.main.edp.projects.epam.com
+    webConsole:
+      url: https://271ABE153BB44A49C12BAA946ADDFCE6.gr7.eu-central-1.eks.amazonaws.com
+    platform: kubernetes
+    kioskEnabled: false
+    admins: [mykola_marusenko@epam.com,sergiy_kulanov@epam.com]
+    developers: [mykola_marusenko@epam.com,sergiy_kulanov@epam.com]
+    gitProvider: github
+    keycloakUrl: https://keycloak.eks-test-mm.aws.main.edp.projects.epam.com
+
+  awsRegion: eu-central-1
+
+  argocd:
+    enabled: true
+    url: "https://argocd.eks-test-mm.aws.main.edp.projects.epam.com"
+
+  dockerRegistry:
+    url: 093899590031.dkr.ecr.eu-central-1.amazonaws.com
+
+  kaniko:
+    roleArn: arn:aws:iam::093899590031:role/AWSIRSA_EksTestMm_Kaniko
+
+  externalSecrets:
+    enabled: true
+    secretProvider:
+      aws:
+        role: arn:aws:iam::093899590031:role/AWSIRSA_EksTestMm_ExternalSecretOperatorAccess
+    manageEDPInstallSecrets: true
+    manageEDPInstallSecretsName: /edp/mm-deploy-secrets
+
+  gerrit-operator:
+    enabled: false
+
+  edp-headlamp:
+    config:
+      oidc:
+        enabled: true
+        clientID: "eks-sandbox"
+
+  edp-tekton:
+    kaniko:
+      roleArn: arn:aws:iam::093899590031:role/AWSIRSA_EksTestMm_Kaniko
