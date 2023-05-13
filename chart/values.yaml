@@ -5,3 +5,7 @@ storageClass:
 ingressNginx:
   enable: true
   createNamespace: true
+  
+externalSecrets:
+  enable: true
+  createNamespace: true
