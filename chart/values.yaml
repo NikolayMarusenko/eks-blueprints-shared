@@ -17,3 +17,7 @@ tekton:
 keycloakPostgresql:
   enable: true
   createNamespace: true
+
+keycloak:
+  enable: true
+  createNamespace: false
