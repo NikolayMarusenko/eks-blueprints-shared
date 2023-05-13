@@ -22,26 +22,4 @@ spec:
         duration: 5s
         factor: 2
         maxDuration: 1m
-  source:
-    repoURL: https://epam.github.io/edp-helm-charts/stable
-    chart: edp-install
-    targetRevision: {{ .Values.edp.targetRevision }}
-    helm:
-      values: |
-        edp:
-        {{- toYaml .Values.edp | nindent 10 }}
-  destination:
-    server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
-    namespace: security
-  syncPolicy:
-    automated:
-      prune: true
-    syncOptions:
-      - CreateNamespace={{ .Values.edp.createNamespace }}
-    retry:
-      limit: 1
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 1m
 {{- end -}}
