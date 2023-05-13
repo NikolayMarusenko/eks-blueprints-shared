@@ -1,0 +1,19 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: keycloak-postgresql
+  namespace: security
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: SecretStore
+    name: ParameterStore
+  data:
+  - secretKey: password
+    remoteRef:
+      key: /edp/mm-deploy-secrets
+      property: keycloak-postgresql.password
+  - secretKey: postgres-password
+    remoteRef:
+      key: /edp/mm-deploy-secrets
+      property: keycloak-postgresql.postgres-password
