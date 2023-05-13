@@ -1,4 +1,4 @@
-keycloak:
+keycloakx:
   replicas: 1
 
   # Deploy the latest version
