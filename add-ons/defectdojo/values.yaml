@@ -23,3 +23,9 @@ defectdojo:
         storageClassName: ebs-sc
         size: 2Gi
         
+   rabbitmq:
+     global:
+       storageClass: "ebs-sc"
+     persistence:
+        storageClass: "ebs-sc"
+        size: 2Gi
