@@ -43,3 +43,29 @@ edp-install:
   edp-tekton:
     kaniko:
       roleArn: arn:aws:iam::093899590031:role/AWSIRSA_EksTestMm_Kaniko
+    buildTool:
+      go:
+        cache:
+          persistentVolume:
+            size: 5Gi
+            # -- Specifies storageClass type. If not specified, a default storageClass for go-cache volume is used
+            storageClass: ebs-sc
+      npm:
+        cache:
+          persistentVolume:
+            size: 5Gi
+            # -- Specifies storageClass type. If not specified, a default storageClass for npm-cache volume is used
+            storageClass: ebs-sc
+    
+  nexus-operator:
+    nexus:
+      storage:
+        class: ebs-sc
+         
+  sonar-operator:
+    sonar:
+      storage:
+        data:
+          class: ebs-sc
+        database:
+          class: ebs-sc
