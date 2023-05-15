@@ -16,7 +16,7 @@ spec:
     targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
-        argocd:
+        argo-cd:
         {{- toYaml .Values.argocd | nindent 10 }}
   destination:
     server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
