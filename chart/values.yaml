@@ -24,3 +24,7 @@ keycloak:
 edp:
   enable: true
   createNamespace: true
+
+argocd:
+  enable: true
+  createNamespace: true
