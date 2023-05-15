@@ -2,7 +2,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: defectdojo-rabbitmq-specific
-  namespace: security
+  namespace: edp-mm
 spec:
   refreshInterval: 1h
   secretStoreRef:
