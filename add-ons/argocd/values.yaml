@@ -1,56 +1,57 @@
-redis-ha:
-  enabled: false
+argocd:
+  redis-ha:
+    enabled: false
 
-controller:
-  enableStatefulSet: true
+  controller:
+    enableStatefulSet: true
 
-server:
-  replicas: 1
-  extraArgs:
-    - "--insecure"
-  env:
-    - name: ARGOCD_API_SERVER_REPLICAS
-      value: '1'
-  ingress:
-    enabled: true
-    hosts:
-      - "argocd.eks-test-mm.aws.main.edp.projects.epam.com"
-  config:
-    # required when SSO is enabled
-    url: "https://argocd-edp-mm.eks-test-mm.aws.main.edp.projects.epam.com"
-    application.instanceLabelKey: argocd.argoproj.io/instance-edp
-    oidc.config: |
-      name: Keycloak
-      issuer: https://keycloak.eks-test-mm.aws.main.edp.projects.epam.com/auth/realms/edp-demo
-      clientID: argocd-dev
-      clientSecret: $oidc.keycloak.clientSecret
-      requestedScopes:
-        - openid
-        - profile
-        - email
-        - groups
-  rbacConfig:
-    # users may be still be able to login,
-    # but will see no apps, projects, etc...
-    policy.default: ''
-    scopes: '[groups]'
-    policy.csv: |
-      # default global admins
-      g, ArgoCDAdmins, role:admin
-configs:
-  secret:
-    extra:
-      oidc.keycloak.clientSecret: "REPLACE"
-  params:
-    application.namespaces: ""
+  server:
+    replicas: 1
+    extraArgs:
+      - "--insecure"
+    env:
+      - name: ARGOCD_API_SERVER_REPLICAS
+        value: '1'
+    ingress:
+      enabled: true
+      hosts:
+        - "argocd.eks-test-mm.aws.main.edp.projects.epam.com"
+    config:
+      # required when SSO is enabled
+      url: "https://argocd-edp-mm.eks-test-mm.aws.main.edp.projects.epam.com"
+      application.instanceLabelKey: argocd.argoproj.io/instance-edp
+      oidc.config: |
+        name: Keycloak
+        issuer: https://keycloak.eks-test-mm.aws.main.edp.projects.epam.com/auth/realms/edp-demo
+        clientID: argocd-dev
+        clientSecret: $oidc.keycloak.clientSecret
+        requestedScopes:
+          - openid
+          - profile
+          - email
+          - groups
+    rbacConfig:
+      # users may be still be able to login,
+      # but will see no apps, projects, etc...
+      policy.default: ''
+      scopes: '[groups]'
+      policy.csv: |
+        # default global admins
+        g, ArgoCDAdmins, role:admin
+  configs:
+    secret:
+      extra:
+        oidc.keycloak.clientSecret: "REPLACE"
+    params:
+      application.namespaces: ""
 
-repoServer:
-  replicas: 1
+  repoServer:
+    replicas: 1
 
-# we use Keycloak so no DEX is required
-dex:
-  enabled: false
+  # we use Keycloak so no DEX is required
+  dex:
+    enabled: false
 
-# Disabled for multitenancy env with single instance deployment
-applicationSet:
-  enabled: false
+  # Disabled for multitenancy env with single instance deployment
+  applicationSet:
+    enabled: false
