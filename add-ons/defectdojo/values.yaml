@@ -1,5 +1,5 @@
 defectdojo:
-  tag: 2.17.0
+  tag: 2.22.1
   fullnameOverride: defectdojo
   host: defectdojo-edp-mm.eks-test-mm.aws.main.edp.projects.epam.com
   site_url: https://defectdojo-edp-mm.eks-test-mm.aws.main.edp.projects.epam.com
