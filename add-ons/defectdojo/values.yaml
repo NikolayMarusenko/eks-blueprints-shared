@@ -22,10 +22,14 @@ defectdojo:
       persistentVolumeClaim:
         storageClassName: ebs-sc
         size: 2Gi
-        
-   rabbitmq:
-     global:
-       storageClass: "ebs-sc"
-     persistence:
+       
+  postgresql:
+    primary:
+      persistence:
         storageClass: "ebs-sc"
         size: 2Gi
+
+  rabbitmq:
+    persistence:
+      storageClass: "ebs-sc"
+      size: 2Gi
