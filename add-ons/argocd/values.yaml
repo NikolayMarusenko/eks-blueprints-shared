@@ -15,7 +15,7 @@ argo-cd:
     ingress:
       enabled: true
       hosts:
-        - "argocd.eks-test-mm.aws.main.edp.projects.epam.com"
+        - "argocd-edp-mm.eks-test-mm.aws.main.edp.projects.epam.com"
     config:
       # required when SSO is enabled
       url: "https://argocd-edp-mm.eks-test-mm.aws.main.edp.projects.epam.com"
