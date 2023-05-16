@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: argocd
+  name: argocd-github
   namespace: edp-mm
 spec:
   refreshInterval: 1h
@@ -12,11 +12,12 @@ spec:
   - secretKey: sshPrivateKey
     remoteRef:
       key: /edp/mm-deploy-secrets
-      property: argocd.sshPrivateKey
+      property: argocd-github.sshPrivateKey
+      decodingStrategy: Base64
   - secretKey: url
     remoteRef:
       key: /edp/mm-deploy-secrets
-      property: argocd.url
+      property: argocd-github.url
   target:
     template:
       metadata:
