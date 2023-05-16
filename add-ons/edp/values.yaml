@@ -15,7 +15,7 @@ edp-install:
 
   argocd:
     enabled: true
-    url: "https://argocd.eks-test-mm.aws.main.edp.projects.epam.com"
+    url: "https://argocd-edp-mm.eks-test-mm.aws.main.edp.projects.epam.com"
 
   dockerRegistry:
     url: 093899590031.dkr.ecr.eu-central-1.amazonaws.com
