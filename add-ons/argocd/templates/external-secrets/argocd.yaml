@@ -17,7 +17,8 @@ spec:
     remoteRef:
       key: /edp/mm-deploy-secrets
       property: argocd.url
-  template:
-    metadata:
-      labels:
-        argocd.argoproj.io/secret-type: repo-creds
+  target:
+    template:
+      metadata:
+        labels:
+          argocd.argoproj.io/secret-type: repo-creds
