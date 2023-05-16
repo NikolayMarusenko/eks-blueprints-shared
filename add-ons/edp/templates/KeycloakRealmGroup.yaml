@@ -5,4 +5,4 @@ metadata:
   namespace: edp-mm
 spec:
   name: ArgoCD-edp-mm-users
-  realm: edp-mm-main
+  realm: main
