@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: edp-mm
+  namespace: argocd
+  # Finalizer that ensures that project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: CD pipelines for edp-mm
+  roles:
+    - name: developer
+      description: Users for edp-mm tenant
+      policies:
+        - p, proj:edp-mm:developer, applications, create, edp-mm/*, allow
+        - p, proj:edp-mm:developer, applications, delete, edp-mm/*, allow
+        - p, proj:edp-mm:developer, applications, get, edp-mm/*, allow
+        - p, proj:edp-mm:developer, applications, override, edp-mm/*, allow
+        - p, proj:edp-mm:developer, applications, sync, edp-mm/*, allow
+        - p, proj:edp-mm:developer, applications, update, edp-mm/*, allow
+        - p, proj:edp-mm:developer, repositories, create, edp-mm/*, allow
+        - p, proj:edp-mm:developer, repositories, delete, edp-mm/*, allow
+        - p, proj:edp-mm:developer, repositories, update, edp-mm/*, allow
+        - p, proj:edp-mm:developer, repositories, get, edp-mm/*, allow
+      groups:
+        # Keycloak Group name
+        - ArgoCD-edp-mm-users
+  destinations:
+    # ensure we can deploy to ns with tenant prefix
+    - namespace: 'edp-mm-*'
+    # allow to deploy to specific server (local in our case)
+      server: https://kubernetes.default.svc
+  # Deny all cluster-scoped resources from being created, except for Namespace
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  # Allow all namespaced-scoped resources to be created, except for ResourceQuota, LimitRange, NetworkPolicy
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+  # we are ok to create any resources inside namespace
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  # enable access only for specific git server. The example below 'edp-mm' - it is namespace where EDP deployed
+  sourceRepos:
+    - ssh://git@github.com:22/NikolayMarusenko/*
+  # enable capability to deploy objects from namespaces
+  sourceNamespaces:
+    - edp-mm
