@@ -1,0 +1,23 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: argocd
+  namespace: edp-mm
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: SecretStore
+    name: aws-parameterstore
+  data:
+  - secretKey: sshPrivateKey
+    remoteRef:
+      key: /edp/mm-deploy-secrets
+      property: argocd.sshPrivateKey
+  - secretKey: url
+    remoteRef:
+      key: /edp/mm-deploy-secrets
+      property: argocd.url
+  template:
+    metadata:
+      labels:
+        argocd.argoproj.io/secret-type: repo-creds
