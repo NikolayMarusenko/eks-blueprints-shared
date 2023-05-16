@@ -43,7 +43,7 @@ argo-cd:
       extra:
         oidc.keycloak.clientSecret: "REPLACE"
     params:
-      application.namespaces: "edp-mm"
+      application.namespaces: ""
 
   repoServer:
     replicas: 1
