@@ -24,7 +24,7 @@ argo-cd:
         name: Keycloak
         issuer: https://keycloak.eks-test-mm.aws.main.edp.projects.epam.com/auth/realms/edp-mm-main
         clientID: argocd
-        clientSecret: $oidc.keycloak.clientSecret
+        clientSecret: $keycloak-client-argocd-secret:clientSecret
         requestedScopes:
           - openid
           - profile
@@ -38,13 +38,7 @@ argo-cd:
       policy.csv: |
         # default global admins
         g, ArgoCDAdmins, role:admin
-  configs:
-    secret:
-      extra:
-        oidc.keycloak.clientSecret: "REPLACE"
-    params:
-      application.namespaces: ""
-
+        
   repoServer:
     replicas: 1
 
