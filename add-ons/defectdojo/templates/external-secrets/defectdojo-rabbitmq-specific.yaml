@@ -7,7 +7,7 @@ spec:
   refreshInterval: 1h
   secretStoreRef:
     kind: SecretStore
-    name: aws-parameterstore
+    name: aws-parameterstor
   data:
   - secretKey: rabbitmq-password
     remoteRef:
