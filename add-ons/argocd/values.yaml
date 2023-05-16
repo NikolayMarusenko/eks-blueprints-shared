@@ -22,8 +22,8 @@ argo-cd:
       application.instanceLabelKey: argocd.argoproj.io/instance-edp
       oidc.config: |
         name: Keycloak
-        issuer: https://keycloak.eks-test-mm.aws.main.edp.projects.epam.com/auth/realms/edp-demo
-        clientID: argocd-dev
+        issuer: https://keycloak.eks-test-mm.aws.main.edp.projects.epam.com/auth/realms/edp-mm-main
+        clientID: argocd
         clientSecret: $oidc.keycloak.clientSecret
         requestedScopes:
           - openid
@@ -43,7 +43,7 @@ argo-cd:
       extra:
         oidc.keycloak.clientSecret: "REPLACE"
     params:
-      application.namespaces: ""
+      application.namespaces: "edp-mm"
 
   repoServer:
     replicas: 1
