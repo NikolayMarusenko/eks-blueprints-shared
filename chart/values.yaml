@@ -10,8 +10,8 @@ externalSecrets:
   createNamespace: true
   
 tekton:
-  enable: true
-  createNamespace: true
+  enable: false
+  createNamespace: false
   
 keycloakPostgresql:
   enable: true
@@ -22,12 +22,12 @@ keycloak:
   createNamespace: true
 
 edp:
-  enable: true
-  createNamespace: true
+  enable: false
+  createNamespace: false
 
 argocd:
-  enable: true
-  createNamespace: true
+  enable: false
+  createNamespace: false
   
 defectdojo:
   enable: true
