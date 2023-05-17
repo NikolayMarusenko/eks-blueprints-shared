@@ -26,8 +26,8 @@ edp:
   createNamespace: false
 
 argocd:
-  enable: false
-  createNamespace: false
+  enable: true
+  createNamespace: true
   
 defectdojo:
   enable: true
